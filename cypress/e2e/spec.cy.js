@@ -1,6 +1,16 @@
 describe("template spec", () => {
-  it("passes", () => {
+  beforeEach(() => {
     cy.visit("/fundamentals");
+  });
+
+  it("contains correct header text", () => {
+    cy.getDataTest("fundamentals-header").should(
+      "contain.text",
+      "Testing Fundamentals"
+    );
+  });
+
+  it("passes", () => {
     cy.contains(/Your tests will exist in a describe block/i).should(
       "not.be.visible"
     );
